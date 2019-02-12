@@ -30,9 +30,11 @@ $ curl -XPOST http://localhost:8086/query?db=testdb \
 * [InfluxDB-Docker] - Install InfluxDB with docker image
 * [InfluxQL] - Schema exploration using InfluxQL!
 * [Telegraf] - an agent for collecting, processing, aggregating, and writing metrics.
+* [InfluxDB-Kafka] - Using Telegraf to Send Metrics to InfluxDB and Kafka
 
 
 [InfluxDB-Docker]: <https://hub.docker.com/_/influxdb>
 [InfluxQL]: <https://docs.influxdata.com/influxdb/v1.7/query_language/schema_exploration/>
 [Telegraf]: <https://github.com/influxdata/telegraf>
+[InfluxDB-Kafka]: <https://www.influxdata.com/blog/using-telegraf-to-send-metrics-to-influxdb-and-kafka/>
 
