@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "fc3ddf05-b74d-4931-87ec-cda578119789",
+		"name": "Grafana",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "q",
+							"value": "SELECT * FROM \"_internal\"..\"database\" LIMIT 10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "host01.tatw.myweb.com:8086/ping",
+					"host": [
+						"host01",
+						"tatw",
+						"myweb",
+						"com"
+					],
+					"port": "8086",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show measurements",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "q",
+							"value": "show measurements",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "host01.tatw.myweb.com:8086/query?db=testdb",
+					"host": [
+						"host01",
+						"tatw",
+						"myweb",
+						"com"
+					],
+					"port": "8086",
+					"path": [
+						"query"
+					],
+					"query": [
+						{
+							"key": "db",
+							"value": "testdb"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Write records to testdb",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "cpu_load_short,host=server01,region=us-west value=0.64 1434055562000000000"
+				},
+				"url": {
+					"raw": "host01.tatw.myweb.com:8086/write?db=testdb",
+					"host": [
+						"host01",
+						"tatw",
+						"myweb",
+						"com"
+					],
+					"port": "8086",
+					"path": [
+						"write"
+					],
+					"query": [
+						{
+							"key": "db",
+							"value": "testdb"
+						}
+					]
+				},
+				"description": "curl -XPOST host01.tatw.myweb.com:8086/write?db=testdb --data-binary 'cpu_load_short,host=server01,region=us-west value=0.64 1434055562000000000'"
+			},
+			"response": []
+		},
+		{
+			"name": "Create testdb",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "q",
+							"value": "CREATE DATABASE testdb",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8086/query",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"query"
+					]
+				},
+				"description": "curl -X POST http://localhost:8086/query --data-urlencode \"q=CREATE DATABASE testdb\""
+			},
+			"response": []
+		},
+		{
+			"name": "Debug/pprof",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "host01.tatw.myweb.com:8086/debug/pprof",
+					"host": [
+						"host01",
+						"tatw",
+						"myweb",
+						"com"
+					],
+					"port": "8086",
+					"path": [
+						"debug",
+						"pprof"
+					]
+				},
+				"description": "curl host01.tatw.myweb.com:8086/debug/pprof"
+			},
+			"response": []
+		}
+	]
+}
